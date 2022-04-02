@@ -8,8 +8,8 @@ local naughty = require( "naughty" )
 local globalkeys = awful.util.table.join( -- Destroy all notifications
 	-- awful.key( { "Control" }, "space", function() awful.layout.inc( 1 ) end ),
 	awful.key( { "Control", "Shift" }, "space", function() awful.layout.inc( -1 ) end ),
-		awful.key( { altkey }, "p", function() os.execute( "screenshot" ) end ),
-		awful.key( { altkey, "Control" }, "l", function() os.execute( scrlocker ) end ), -- Show help
+		-- awful.key( { altkey }, "p", function() xrandr.xrandr() end ),
+		-- awful.key( { altkey, "Control" }, "l", function() os.execute( scrlocker ) end ), -- Show help
 		awful.key( { modkey, "Control" }, "Left", awful.tag.viewprev ),
 		awful.key( { modkey, "Control" }, "Right", awful.tag.viewnext ),
 		awful.key( { modkey }, "j", awful.tag.viewprev ),

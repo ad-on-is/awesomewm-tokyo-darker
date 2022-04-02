@@ -106,6 +106,7 @@ function beautiful.top_bar( s )
 			layout = wibox.layout.fixed.horizontal,
 			wibox.container.margin( beautiful.volume.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( beautiful.dateclock, widget_spacing, widget_spacing, 0, 0 ),
+			-- wibox.container.margin( beautiful.weather.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( beautiful.battery.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( s.mylayoutbox, widget_spacing, widget_spacing, 5, 5 )
 
@@ -117,6 +118,7 @@ function beautiful.top_bar( s )
 			-- beautiful.pulse.widget,
 			wibox.container.margin( beautiful.volume.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( beautiful.dateclock, widget_spacing, widget_spacing, 0, 0 ),
+			-- wibox.container.margin( beautiful.weather.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( beautiful.battery.widget, widget_spacing, widget_spacing, 0, 0 ),
 			wibox.container.margin( systray, widget_spacing, widget_spacing, 1, 5 ),
 			wibox.container.margin( s.mylayoutbox, widget_spacing, widget_spacing, 5, 5 )

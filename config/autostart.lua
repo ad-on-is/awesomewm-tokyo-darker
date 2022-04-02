@@ -9,7 +9,7 @@ local function run_once( cmd_arr )
 	end
 end
 
-run_once( { "/home/adonis/.local/bin/adonis-autostart" } ) -- comma-separated entries
+run_once( { "/home/adonis/.local/bin/adonis-autostart", "nitrogen --restore" } ) -- comma-separated entries
 
 -- awful.screen.set_auto_dpi_enabled( true )
 

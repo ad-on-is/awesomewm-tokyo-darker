@@ -48,13 +48,15 @@ local weathericon = wibox.widget.imagebox( beautiful.widget_weather )
 beautiful.weather = lain.widget.weather(
 	{
 		city_id = 2643743, -- placeholder (London)
-		notification_preset = { font = "Terminus 10", fg = beautiful.fg_normal },
+		APPID = "02a93a93f5a23b3dc88da0cdd3663308",
+		notification_preset = { font = beautiful.font, fg = beautiful.fg_normal },
 		weather_na_markup = markup.fontfg( beautiful.font, "#eca4c4", "N/A " ),
 		settings = function()
 			descr = weather_now["weather"][1]["description"]:lower()
 			units = math.floor( weather_now["main"]["temp"] )
 			widget:set_markup( markup.fontfg( beautiful.font, "#eca4c4", descr .. " @ " .. units .. "°C" ) )
 		end
+
 	 }
  )
 
@@ -78,7 +80,7 @@ beautiful.cpu = lain.widget.cpu(
 			widget:set_markup(
 				markup.fontfg(
 					beautiful.font, beautiful.fg_normal,
-						markup( color, "  " ) .. markup( beautiful.fg_normal, usage .. "%" )
+						markup( color, "  " ) .. markup( beautiful.fg_normal, usage .. "%" )
 				 )
 			 )
 		end
@@ -96,7 +98,7 @@ beautiful.memory = lain.widget.mem(
 			widget:set_markup(
 				markup.fontfg(
 					beautiful.font, beautiful.fg_normal,
-						markup( color, "  " ) .. markup( beautiful.fg_normal, used .. " GB (" .. percent .. "%)" )
+						markup( color, "﬙  " ) .. markup( beautiful.fg_normal, used .. " GB (" .. percent .. "%)" )
 				 )
 			 )
 		end
@@ -202,13 +204,18 @@ beautiful.pulse = lain.widget.pulse(
  )
 
 beautiful.packages = awful.widget.watch(
-	"bash -c 'paru -Qqu'", 60, function( widget, stdout )
-		local count = select( 2, stdout:gsub( "\n", "\n" ) )
-		if count > 0 then
+	"bash -c 'paru -Qqu | wc -l'", 5, function( widget, stdout )
+		if (stdout:gsub( "^%s*(.-)%s*$", "%1" ) ~= "0") then
 			widget:set_markup(
 				markup.fontfg(
 					beautiful.font, beautiful.fg_normal,
-						markup( beautiful.color_red, "  " ) .. markup( beautiful.fg_normal, count )
+						markup( beautiful.color_red, "  " ) .. markup( beautiful.fg_normal, stdout )
+				 )
+			 )
+		else
+			widget:set_markup(
+				markup.fontfg(
+					beautiful.font, beautiful.fg_normal, markup( beautiful.color_green, "" )
 				 )
 			 )
 		end
